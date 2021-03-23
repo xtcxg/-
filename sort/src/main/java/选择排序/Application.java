@@ -1,3 +1,5 @@
+package 选择排序;
+
 import java.util.Arrays;
 
 public class Application {
@@ -7,22 +9,21 @@ public class Application {
     }
 
     /**
-     * 索引左边的元素都是有序的，将索引所在位置的元素与左边元素比较，插入合适的位置
+     * 找到数组中第 i 小的元素，与数组中第 i 个位置交换
      * O(n^2/2)
-     * 最好的情况，无需移动元素，最坏的情况所有元素都需要移动
+     * 即使数组有序，时间也不变
      * @param arr 待排序数据
      * @return  有序数组
      */
     public static int[] sort(int[] arr) {
-        for (int i = 0; i < arr.length-1; i++) {
+        int len = arr.length;
+        for (int i = 0; i < len; i++) {
             int min;
-            for (int j = i+1; j > 0; j--) {
-                if (arr[j] < arr[j-1]) {
+            for (int j = i+1; j < len; j++) {
+                if (arr[j]<arr[i]) {
                     min = arr[j];
-                    arr[j] = arr[j-1];
-                    arr[j-1] = min;
-                } else {
-                    break;
+                    arr[j] = arr[i];
+                    arr[i] = min;
                 }
             }
         }
